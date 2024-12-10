@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 Motivos para ir em um Date</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background: url('https://th.bing.com/th/id/OIP.-bcJa2mRsxA3ZKqWV3oxrwHaEK?rs=1&pid=ImgDetMain') no-repeat center center/cover; /* Fundo inicial */
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    li {
+      font-size: 1.2em;
+      margin: 10px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease-in-out;
+    }
+
+    .final {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      inset: 0;
+      background: url('https://i.pinimg.com/originals/76/37/4a/76374a8bb383f49e7a7af09219efc602.jpg') no-repeat center center/cover; /* Fundo final */
+      background-size: cover;
+      color: #fff;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .final h2 {
+      font-size: 2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>5 MOTIVOS PARA VOCÊ IR EM UM DATE COMIGO</h1>
+    <ul id="reasons"></ul>
+  </div>
+
+  <div class="final">
+    <h2>Você aceita ir em um date comigo ??🥰</h2>
+  </div>
+
+  <script>
+    const reasons = [
+      "Motivo 1: Vou ser super romântico e sempre ficar na ponta da calçada.",
+      "Motivo 2: Vou andar de mãos dadas contigo e te elogiar até o fim do dia.",
+      "Motivo 3: Vou ficar te irritando como modo de demonstração.",
+      "Motivo 4: Vou te tratar como uma princesa do começo ao fim do dia.",
+      "Motivo 5: Vou te levar pra casa em segurança e sair correndo com medo de ser assaltado (mas o importante é você chegar bem).",
+    ];
+
+    const reasonsContainer = document.getElementById("reasons");
+
+    function displayReason(reason, index) {
+      return new Promise((resolve) => {
+        const li = document.createElement("li");
+        li.textContent = reason;
+        reasonsContainer.appendChild(li);
+
+        // Animação para exibir o item
+        setTimeout(() => {
+          li.style.opacity = 1;
+          li.style.transform = "translateY(0)";
+        }, 100);
+
+        // Esperar 3 segundos antes de passar para o próximo motivo
+        setTimeout(() => resolve(), 3000);
+      });
+    }
+
+    async function displayReasons() {
+      for (let i = 0; i < reasons.length; i++) {
+        await displayReason(reasons[i], i);
+      }
+
+      // Após exibir todos os motivos, mostrar a tela final
+      setTimeout(() => {
+        document.querySelector(".container").style.display = "none";
+        document.querySelector(".final").style.display = "flex";
+      }, 1000);
+    }
+
+    displayReasons();
+  </script>
+</body>
+</html>
